@@ -19,8 +19,18 @@
 
 #include <Arduino.h>
 #include <FS.h>
+#include <lwip/def.h>
 #include "EFUpdate.h"
-#include "util.h"
+
+#ifndef U_SPIFFS
+/*
+ * Arduino 8266 libraries removed U_SPIFFS on master, replacing it with U_FS to allow for other FS types -
+ * See https://github.com/esp8266/Arduino/commit/a389a995fb12459819e33970ec80695f1eaecc58#diff-6c6d762c616bd0b92156f152d128ad51
+ *
+ * Substitute the value here, while not breaking things for people using older SDKs.
+ */
+#define U_SPIFFS U_FS
+#endif
 
 void EFUpdate::begin() {
     _maxSketchSpace = (ESP.getFreeSketchSpace() - 0x1000) & 0xFFFFF000;

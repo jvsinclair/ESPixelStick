@@ -1,8 +1,8 @@
 /*
-* bitbang.h - Bitbang routines for ESPixelStick
+* Mode.h
 *
 * Project: ESPixelStick - An ESP8266 and E1.31 based pixel driver
-* Copyright (c) 2015 Shelby Merrick
+* Copyright (c) 2018 Shelby Merrick
 * http://www.forkineye.com
 *
 *  This program is provided free for you to use in any way that you wish,
@@ -17,9 +17,11 @@
 *
 */
 
-#ifndef BITBANG_H_
-#define BITBANG_H_
+#ifndef MODE_H_
+#define MODE_H_
 
-extern "C" void ICACHE_RAM_ATTR doGECE(uint8_t pin, uint32_t packet);
+/* Output Mode - There can be only one! (-Conor MacLeod) */
+#define ESPS_MODE_PIXEL
+//#define ESPS_MODE_SERIAL
 
-#endif /* BITBANG_H_ */
+#endif  // MODE_H_
